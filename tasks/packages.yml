@@ -1,5 +1,7 @@
-- name: install respositories
+- name: install regolith respository
   apt_repository: repo='ppa:regolith-linux/release' state=present
+- name: install docker respository
+  apt_repository: repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" state=present
   #  apt_repository: repo='{{item}}' state=present
   #  which_items:
   #    - 'ppa:regolith-linux/release'
