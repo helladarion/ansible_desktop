@@ -1,10 +1,10 @@
-- name: Install respositories
+- name: install respositories
   apt_repository: repo='{{item}}' state=present
   which_items:
     - 'ppa:regolith-linux/release'
     - "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-- name: Install Packages
+- name: install Packages
   package:
     name:
       - htop
