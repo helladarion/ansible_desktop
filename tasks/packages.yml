@@ -1,0 +1,11 @@
+- name: Install respositories
+    apt_repository: repo='ppa:regolith-linux/release' state=present
+
+- name: Install Packages
+  package:
+    name:
+      - htop
+      - tmux
+      - regolith-desktop-standard
+
+
