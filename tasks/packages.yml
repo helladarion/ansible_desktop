@@ -1,5 +1,7 @@
 - name: Install respositories
-  apt_repository: repo='ppa:regolith-linux/release' state=present
+  apt_repository:
+    - repo='ppa:regolith-linux/release' state=present
+    - repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" state=present
 
 - name: Install Packages
   package:
@@ -7,5 +9,17 @@
       - htop
       - tmux
       - regolith-desktop-standard
+      - lsof
+      - neofetch
+      - iotop
+      - glances
+      - ranger
+      - ranger
+      - rsync
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose
+      - curl
 
 
