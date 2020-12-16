@@ -6,4 +6,6 @@
   tasks:
   - name: Install htop
     package:
-      name: htop
+      name:
+        - htop
+        - tmux
