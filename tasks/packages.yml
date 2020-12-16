@@ -1,5 +1,5 @@
 - name: Install respositories
-    apt_repository: repo='ppa:regolith-linux/release' state=present
+  apt_repository: repo='ppa:regolith-linux/release' state=present
 
 - name: Install Packages
   package:
