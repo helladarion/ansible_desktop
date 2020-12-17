@@ -1,10 +1,11 @@
 # tasks to complete before running roles
-- hosts: localhost
+- hosts: all
+  tags: always
   connection: local
   become: true
 
   pre_tasks:
-    - name: update repositories
+    - name: pre-run | update package cache (debian, etc)
       apt:
         update_cache: yes
       changed_when: False
