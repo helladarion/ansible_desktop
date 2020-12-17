@@ -77,3 +77,4 @@
     - { src: 'git/gitconfig'; dest: '.gitconfig' }
     - { src: 'speedswapper'; dest: '.speedswapper' }
     - { src: 'bashrc'; dest: '.bashrc' }
+    - { src: 'ssh/config'; dest: '.ssh/config' }

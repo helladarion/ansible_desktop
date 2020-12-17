@@ -31,5 +31,8 @@
       - docker-compose
       - curl
       - ssh
+      - sshfs
+      - wget
+      - "{{ vim_package }}"
 
 

@@ -1,0 +1,377 @@
+Host *
+KeepAlive yes
+ServerAliveInterval 60
+ServerAliveCountMax 2
+ForwardAgent=yes
+StrictHostKeyChecking no
+UserKnownHostsFile=/dev/null
+LogLevel ERROR
+#ProxyCommand ssh $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:/ -p /') exec nc -w1 $(echo %h | sed 's/^.*+//;/:/!s/$/ %p/;s/:/ /')
+
+ControlMaster auto
+ControlPath ~/.ssh/control:%h:%p:%r
+
+Host devpca
+Hostname ps01.dev1.nakika.tv
+User rdepaiva
+Port 22
+ProxyCommand ssh -W %h:%p dev
+#ProxyCommand ssh rdepaiva@bastion.dev1.nakika.tv nc %h %p %r
+
+#Host beer
+#Hostname beer.prod1.nakika.tv
+#User rdepaiva
+#Port 22
+##LogLevel QUIET
+#ProxyCommand ssh -W %h:%p prod
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+#
+#Host beer.prod1.nakika.tv
+#LogLevel QUIET
+
+#Host casa
+#Hostname rafael.dnsfor.me
+#User rafael
+#Port 3851
+
+Host jump
+LogLevel QUIET
+User rdepaiva
+#Hostname jump.appliance.envysion.com
+Hostname appliance-jump.prod1.nakika.tv
+
+Host app
+#LogLevel QUIET
+User rdepaiva
+Hostname appliance-app.prod1.nakika.tv
+ProxyJump prod
+
+Host appproxy
+User rdepaiva
+Hostname appliance-app.prod1.nakika.tv
+DynamicForward 9999
+
+Host devproxy
+User rdepaiva
+Hostname bastion.dev1.nakika.tv
+DynamicForward 3128
+
+Host auxproxy
+User rdepaiva
+Hostname appliance-aux01.prod1.nakika.tv
+ProxyJump prod
+DynamicForward 9999
+
+Host appdev
+LogLevel QUIET
+User rdepaiva
+Hostname appliance-app.dev1.nakika.tv
+ProxyJump dev
+
+Host apptest
+LogLevel QUIET
+User rdepaiva
+Hostname appliance-app.test1.nakika.tv
+ProxyJump test
+
+Host *.build02
+ProxyCommand ssh -W $(basename %h .build02):%p build02
+
+Host *.auxprod
+ProxyCommand ssh -W $(basename %h .auxprod):%p appliance-aux01.prod
+
+Host *.auxdev
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .auxdev):%p appliance-aux01.dev
+
+Host *.auxtest
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .auxtest):%p appliance-aux01.test
+
+Host ps01
+LogLevel QUIET
+User rdepaiva
+Hostname appliance-ps01.prod1.nakika.tv
+ProxyJump app
+
+Host nfs01
+LogLevel QUIET
+User rdepaiva
+Hostname appliance-nfs01.prod1.nakika.tv
+ProxyJump app
+
+Host loghost
+Hostname loghost
+User rdepaiva
+Port 22
+LogLevel QUIET
+ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host ??-??-??-??-??-??
+User rdepaiva
+Port 22
+#LogLevel QUIET
+#ProxyCommand ssh -W %h:%p app
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host whiskey
+Hostname whiskey
+User rdepaiva
+Port 22
+LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host yvrrafa
+Hostname 60-45-cb-a1-d9-83
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh -W $(basename %h):%p dev
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host appolonuc
+Hostname f4-4d-30-6a-9e-11
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host newapollonuc
+Hostname f4-4d-30-6a-9f-a9
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host c7vm
+Hostname 08-00-27-4d-7c-16
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host sl6vm
+Hostname 08-00-27-3e-f9-4b
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+
+Host puppet4Server
+Hostname puppetmaster01
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host p4server
+Hostname dc-ps02.nakika.tv
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+#
+
+Host pi-wifi-bridge
+Hostname 192.168.10.201
+User pi
+Port 22
+
+Host rafaelDigitalOcean
+Hostname 45.55.247.129
+User root
+Port 22
+#LogLevel QUIET
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host gigabyte
+Hostname 40-8d-5c-f4-b4-68
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host gigabyte-office
+Hostname 40-8d-5c-f4-b1-72
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host superMicro-office
+Hostname ac-1f-6b-94-47-c6
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host nuc6
+Hostname f4-4d-30-6b-bf-f4
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host build02
+Hostname build02-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host build03
+Hostname build03-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+#
+Host build04
+Hostname build04-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host build05
+Hostname build05-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host build06
+Hostname build06-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host imageserver
+Hostname 00-25-90-f0-60-e4
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host newMB
+Hostname 04-d9-f5-21-42-04
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh -W %h:%p dev
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host superMicro
+Hostname ac-1f-6b-77-81-7f
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host buildhq
+Hostname buildhq-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host build01
+Hostname build01-tun0.prod1
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host vmc8
+Hostname 08-00-27-ed-2b-e0.devappliance.envysion.com
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyCommand ssh -W $(basename %h):%p dev
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
+Host dev
+LogLevel QUIET
+User rdepaiva
+Hostname bastion.dev1.nakika.tv
+
+Host *.dev
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .dev):%p dev
+
+Host test
+LogLevel QUIET
+User rdepaiva
+Hostname bastion.test1.nakika.tv
+
+Host *.test
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .test):%p test
+
+Host prod
+LogLevel QUIET
+User rdepaiva
+Hostname bastion.prod1.nakika.tv
+
+Host *.prod
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .prod):%p prod
+
+Host dc
+LogLevel QUIET
+User rdepaiva
+Hostname bastiondc.envysion.com
+
+Host *.dc
+User rdepaiva
+Port 22
+ProxyCommand ssh -W $(basename %h .dc):%p dc
+
+Host ??-??-??-??-??-??.dev
+LogLevel QUIET
+ProxyCommand ssh -W $(basename %h .dev)appliance.envysion.com:%p dev
+
+Host *.proxy
+LogLevel QUIET
+ProxyCommand ssh -W $(basename %h .proxy):%p prod
+DynamicForward 9999
+
+Host ??-??-??-??-??-??.test
+LogLevel QUIET
+ProxyCommand ssh -W $(basename %h .test)appliance.envysion.com:%p test
+
+Host ??-??-??-??-??-??.prod
+LogLevel QUIET
+ProxyCommand ssh -W $(basename %h .prod)appliance.envysion.com:%p prod
+
+Host ??-??-??-??-??-??.dc
+LogLevel QUIET
+ProxyCommand ssh -W $(basename %h .dc)appliance.envysion.com:%p dc

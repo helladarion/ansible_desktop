@@ -1,2 +1,9 @@
 openssh_package: openssh-server
 openssh_service: ssh
+sudo_group: sudo
+dconf_package: dconf-cli
+python_psutil_package: python3-psutil
+python_package: python3
+python_pip_package: python3-pip
+python_virtualenv_package: python3-virtualenv
+vim_package: vim-nox
