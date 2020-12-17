@@ -1,13 +1,12 @@
-- name: users | ansible | create group
-  group:
-    name: ansible
-    state: present
-    system: yes
+#- name: users | ansible | create group
+#  group:
+#    name: ansible
+#    state: present
+#    system: yes
 
 - name: users | ansible | create user
   user:
     name: ansible
-    group: adm,ansible, {{ sudo_group }}
     system: yes
 
 - name: copy sudoers_ansible

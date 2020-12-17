@@ -7,7 +7,7 @@
   user:
     name: rdepaiva
     group: rdepaiva
-    groups: adm,ansible,{{ sudo_group }}
+    groups: adm,{{ sudo_group }}
     state: present
     comment: "Rafael de Paiva Rogerio"
     password: "{{ rdepaiva_password }}"
