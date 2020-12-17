@@ -2,6 +2,7 @@
   group:
     name: rdepaiva
     state: present
+
 - name: users | rdepaiva | create user
   user:
     name: rdepaiva
@@ -34,7 +35,7 @@
   authorized_key:
     user: rdepaiva
     key: "{{ item }}"
- with_file:
+  with_file:
     - users/rdepaiva/ssh/id_rsa.pub
 
 - name: users | rdepaiva | copy tmux config (workstation version)
