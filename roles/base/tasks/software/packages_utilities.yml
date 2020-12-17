@@ -26,13 +26,13 @@
       - iotop
       - glances
       - ranger
-      - ranger
       - rsync
       - docker-compose
       - curl
       - ssh
       - sshfs
       - wget
+      - makepasswd
       - "{{ vim_package }}"
 
 
