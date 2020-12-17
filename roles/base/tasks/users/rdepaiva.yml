@@ -15,7 +15,7 @@
 
 - name: users | rdepaiva | rdepaiva | add sudoers file
   copy:
-    src: files/sudoers_rdepaiva
+    src: users/sudoers_rdepaiva
     dest: /etc/sudoers.d/rdepaiva
     owner: root
     group: root
