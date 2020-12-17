@@ -1,0 +1,79 @@
+- name: users | rdepaiva | create group
+  group:
+    name: rdepaiva
+    state: present
+- name: users | rdepaiva | create user
+  user:
+    name: rdepaiva
+    group: rdepaiva
+    groups: adm,ansible,{{ sudo_group }}
+    state: present
+    comment: "Rafael de Paiva Rogerio"
+    password: "{{ rdepaiva_password }}"
+    shell: /bin/bash
+
+- name: users | rdepaiva | rdepaiva | add sudoers file
+  copy:
+    src: files/sudoers_rdepaiva
+    dest: /etc/sudoers.d/rdepaiva
+    owner: root
+    group: root
+    mode: 0440
+
+- name: users | rdepaiva | create .ssh directory
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+    owner: rdepaiva
+    group: rdepaiva
+    mode: 0700
+  with_items:
+    - { dir: '/home/rdepaiva/.ssh' }
+
+- name: users | rdepaiva | add public key
+  authorized_key:
+    user: rdepaiva
+    key: "{{ item }}"
+ with_file:
+    - users/rdepaiva/ssh/id_rsa.pub
+
+- name: users | rdepaiva | copy tmux config (workstation version)
+  copy:
+    src: users/rdepaiva/tmux/tmux.conf.workstation
+    dest: /home/rdepaiva/.tmux.conf
+    owner: rdepaiva
+    group: rdepaiva
+    mode: 0600
+
+- name: users | rdepaiva | clone tmux-sensible plugin repository
+  git:
+    repo: https://github.com/tmux-plugins/tmux-sensible.git
+    dest: /home/rdepaiva/.tmux/plugins/tmux-sensible
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | rdepaiva | clone tmux-continuum plugin repository
+  git:
+    repo: https://github.com/tmux-plugins/tmux-continuum
+    dest: /home/rdepaiva/.tmux/plugins/tmux-continuum
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | rdepaiva | clone tmux-resurrect plugin repository
+  git:
+    repo: https://github.com/tmux-plugins/tmux-resurrect
+    dest: /home/rdepaiva/.tmux/plugins/resurrect
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | rdepaiva | copy dotfiles
+  copy:
+    src: users/rdepaiva/{{ item.src }}
+    dest: /home/rdepaiva/{{ item.dest }}
+    owner: rdepaiva
+    group: rdepaiva
+    mode: 0600
+  with_items:
+    - { src: 'git/gitconfig'; dest: '.gitconfig' }
+    - { src: 'speedswapper'; dest: '.speedswapper' }
+    - { src: 'bashrc'; dest: '.bashrc' }

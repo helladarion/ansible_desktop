@@ -30,5 +30,6 @@
       - rsync
       - docker-compose
       - curl
+      - ssh
 
 

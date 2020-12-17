@@ -1,0 +1,5 @@
+[credential]
+	helper = cache --timeout=3600
+[user]
+	name = rdepaiva
+	email = rdepaiva@envysion.com
