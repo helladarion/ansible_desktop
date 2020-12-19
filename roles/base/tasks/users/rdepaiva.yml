@@ -69,7 +69,7 @@
   # Vim
 - name: users | rdepaiva | vim Vundle
   git:
-    repo: https://github.com/VundleVim/Vundle.vim.git
+    repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/rdepaiva/.vim/bundle/Vundle.vim
     force: yes
   notify: update_vim_plugin_perms
