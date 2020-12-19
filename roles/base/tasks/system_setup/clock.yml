@@ -1,4 +1,4 @@
-- name: system setup | clock | install systemd-timesyncd (ubuntu)
+- name: system setup | clock | install chrony (ubuntu)
   tags: ntp,system setup
   package:
     name: chrony
