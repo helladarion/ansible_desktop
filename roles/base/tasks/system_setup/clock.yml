@@ -1,14 +1,14 @@
 - name: system setup | clock | install systemd-timesyncd (ubuntu)
   tags: ntp,system setup
   package:
-    name: systemd-timesyncd
+    name: chrony
     state: latest
   when: ansible_distribution in ["Pop!_OS", "Ubuntu"]
 
-- name: system setup | clock | start and enable systemd-timesyncd
-  tags: ntp,system settiings
+- name: system setup | clock | start and enable chrony
+  tags: ntp,system settings
   service:
-    name: systemd-timesyncd
+    name: chronyd
     state: started
     enabled: true
 
