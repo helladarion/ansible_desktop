@@ -31,6 +31,7 @@
   with_items:
     - { dir: '/home/rdepaiva/.ssh' }
     - { dir: '/home/rdepaiva/.vim/colors' }
+    - { dir: '/home/rdepaiva/.vim/bundle' }
 
 - name: users | rdepaiva | add public key
   authorized_key:
