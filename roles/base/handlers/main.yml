@@ -19,3 +19,7 @@
     owner: rdepaiva
     group: rdepaiva
     recurse: true
+
+- name: update_menlo_cache_fonts
+  command: >
+      fc-cache -f -v
