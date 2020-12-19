@@ -6,5 +6,8 @@
       - "{{ python_package }}"
       - "{{ python_pip_package }}"
       - python-setuptools
+      - build-essential
+      - cmake
+      - python3-dev
       - "{{ python_virtualenv_package }}"
     state: latest
