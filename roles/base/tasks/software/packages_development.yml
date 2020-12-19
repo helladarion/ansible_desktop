@@ -9,5 +9,10 @@
       - build-essential
       - cmake
       - python3-dev
+      - mono-complete
+      - golang
+      - nodejs
+      - default-jdk
+      - npm
       - "{{ python_virtualenv_package }}"
     state: latest
