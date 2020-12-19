@@ -30,6 +30,7 @@
     mode: 0700
   with_items:
     - { dir: '/home/rdepaiva/.ssh' }
+    - { dir: '/home/rdepaiva/.vim/colors' }
 
 - name: users | rdepaiva | add public key
   authorized_key:
