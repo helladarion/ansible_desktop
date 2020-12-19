@@ -33,6 +33,7 @@
       - sshfs
       - wget
       - makepasswd
+      - cmake
       - "{{ vim_package }}"
 
 
