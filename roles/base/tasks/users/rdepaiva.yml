@@ -81,9 +81,7 @@
     repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/rdepaiva/.vim/bundle/Vundle.vim
     force: yes
-  notify:
-    - update_vim_bundle_perms
-    - install_vundle_plugins
+  notify: update_vim_bundle_perms
       #- compile_YCM
 
 - name: users | rdepaiva | copy dotfiles
@@ -100,6 +98,10 @@
     - { src: 'vim/vimrc', dest: '.vimrc' }
     - { src: 'ssh/config', dest: '.ssh/config' }
 
+- name: Check if vundle is in place
+  stat:
+    path: /home/rdepaiva/.vim/bundle/Vundle.vim
+  register: stat_result
 
 - name: users | rdepaiva | copy vim color files
   copy:
@@ -108,7 +110,10 @@
     owner: rdepaiva
     group: rdepaiva
     mode: 0600
+  when: stat_result.stat.exists
   with_items:
     - { src: 'gruvbox.vim' }
     - { src: 'solarized.vim' }
     - { src: 'spacegray.vim' }
+  notify:
+    - install_vundle_plugins
