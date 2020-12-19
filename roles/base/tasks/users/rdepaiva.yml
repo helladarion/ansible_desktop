@@ -66,6 +66,13 @@
     dest: /home/rdepaiva/.tmux/plugins/resurrect
     force: yes
   notify: update_tmux_plugin_perms
+  # Vim
+- name: users | rdepaiva | vim Vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: /home/rdepaiva/.vim/bundle/Vundle.vim
+    force: yes
+  notify: update_vim_plugin_perms
 
 - name: users | rdepaiva | copy dotfiles
   copy:
@@ -78,4 +85,18 @@
     - { src: 'git/gitconfig', dest: '.gitconfig' }
     - { src: 'speedswapper', dest: '.speedswapper' }
     - { src: 'bash/bashrc', dest: '.bashrc' }
+    - { src: 'vim/vimrc', dest: '.vimrc' }
     - { src: 'ssh/config', dest: '.ssh/config' }
+
+
+- name: users | rdepaiva | copy vim color files
+  copy:
+    src: users/rdepaiva/vim/colors/{{ item.src }}
+    dest: /home/rdepaiva/.vim/colors/{{ item.src }}
+    owner: rdepaiva
+    group: rdepaiva
+    mode: 0600
+  with_items:
+    - { src: 'gruvbox.vim' }
+    - { src: 'solarizes.vim' }
+    - { src: 'spacegray' }

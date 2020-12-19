@@ -13,7 +13,7 @@
   # install software
   - import_tasks: software/packages_utilities.yml
   - import_tasks: software/packages_development.yml
-  - import_tasks: software/spacevim.yml
+#- import_tasks: software/spacevim.yml
 
   # Perform remaining tasks:
   - import_tasks: system_setup/cron.yml
