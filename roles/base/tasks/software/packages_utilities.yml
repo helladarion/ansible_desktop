@@ -34,6 +34,7 @@
       - wget
       - makepasswd
       - cmake
+      - fonts-powerline
       - "{{ vim_package }}"
 
 
