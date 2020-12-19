@@ -98,5 +98,5 @@
     mode: 0600
   with_items:
     - { src: 'gruvbox.vim' }
-    - { src: 'solarizes.vim' }
-    - { src: 'spacegray' }
+    - { src: 'solarized.vim' }
+    - { src: 'spacegray.vim' }
