@@ -35,6 +35,7 @@
       - makepasswd
       - cmake
       - fonts-powerline
+      - gnome-system-monitor
       - "{{ vim_package }}"
 
 
