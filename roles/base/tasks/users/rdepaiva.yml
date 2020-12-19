@@ -32,6 +32,7 @@
     - { dir: '/home/rdepaiva/.ssh' }
     - { dir: '/home/rdepaiva/.vim/colors' }
     - { dir: '/home/rdepaiva/.vim/bundle' }
+    - { dir: '/home/rdepaiva/.fonts' }
 
 - name: users | rdepaiva | add public key
   authorized_key:
@@ -51,7 +52,7 @@
 - name: users | rdepaiva | clone Menlo powerline fonts
   git:
     repo: https://github.com/abertsch/Menlo-for-Powerline
-    dest: /usr/local/share/fonts/
+    dest: /home/rdepaiva/.fonts/
     force: yes
   notify: update_menlo_cache_fonts
 
