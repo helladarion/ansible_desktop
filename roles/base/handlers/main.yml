@@ -12,3 +12,10 @@
     owner: rdepaiva
     group: rdepaiva
     recurse: true
+
+- name: update_vim_bundle_perms
+  file:
+    path: /home/rdepaiva/.vim/bundle
+    owner: rdepaiva
+    group: rdepaiva
+    recurse: true
