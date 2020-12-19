@@ -23,3 +23,11 @@
 - name: update_menlo_cache_fonts
   command: >
       fc-cache -f -v
+
+- name: install_vundle_plugins
+  command: >
+      vim +PluginInstall +qall
+
+- name: compile_YCM
+  command: >
+     cd /home/rdepaiva/.vim/

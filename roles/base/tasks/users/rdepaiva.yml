@@ -81,7 +81,10 @@
     repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/rdepaiva/.vim/bundle/Vundle.vim
     force: yes
-  notify: update_vim_bundle_perms
+  notify:
+    - update_vim_bundle_perms
+    - install_vundle_plugins
+      #- compile_YCM
 
 - name: users | rdepaiva | copy dotfiles
   copy:
