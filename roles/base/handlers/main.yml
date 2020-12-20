@@ -27,6 +27,8 @@
 - name: install_vundle_plugins
   shell: >
       vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+  register: resultvim
+  failed_when: ( resultvim.rc not in [0,1] )
 
 - name: compile_YCM
   command: >
