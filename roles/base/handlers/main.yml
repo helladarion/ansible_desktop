@@ -23,13 +23,13 @@
 - name: update_menlo_cache_fonts
   command: >
       fc-cache -f -v
-
 - name: install_vundle_plugins
   shell: >
       echo -ne '\n' | vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+  become_user: rdepaiva
   register: resultvim
+  become: true
   failed_when: ( resultvim.rc not in [0,1] )
-  sudo: no
 
 - name: compile_YCM
   shell: >
