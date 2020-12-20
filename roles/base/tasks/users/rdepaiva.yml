@@ -117,3 +117,4 @@
     - { src: 'spacegray.vim' }
   notify:
     - install_vundle_plugins
+    - compile_YCM
