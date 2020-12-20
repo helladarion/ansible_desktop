@@ -26,8 +26,10 @@
 
 - name: install_vundle_plugins
   shell: >
-      vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+      echo -ne '\n' | vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+  become_user: rdepaiva
   register: resultvim
+  become: true
   failed_when: ( resultvim.rc not in [0,1] )
 
 - name: compile_YCM
