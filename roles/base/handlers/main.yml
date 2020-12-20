@@ -35,5 +35,5 @@
   shell: >
       ./install.sh chdir=~/.vim/bundle/YouCompleteMe/
   when: resultvim|success
-  sudo: no
+  sudo: false
 
