@@ -27,13 +27,13 @@
 - name: install_vundle_plugins
   shell: >
       echo -ne '\n' | vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
-  sudo: no
   register: resultvim
+  sudo: no
   failed_when: ( resultvim.rc not in [0,1] )
 
 - name: compile_YCM
   shell: >
-     ./install.sh chdir=~/.vim/bundle/YouCompleteMe/
+      ./install.sh chdir=~/.vim/bundle/YouCompleteMe/
   when: resultvim|success
   sudo: no
 
