@@ -25,8 +25,8 @@
       fc-cache -f -v
 
 - name: install_vundle_plugins
-  command: >
-      vim +PluginInstall +qall
+  shell: >
+      vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
 
 - name: compile_YCM
   command: >
