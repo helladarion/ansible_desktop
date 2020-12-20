@@ -36,5 +36,5 @@
       ./install.sh chdir=~/.vim/bundle/YouCompleteMe/
   become_user: rdepaiva
   become: true
-  when: resultvim|success
+  when: ( resultvim.rc == 0 )
 
