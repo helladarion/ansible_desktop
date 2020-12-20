@@ -28,8 +28,8 @@
   shell: >
       echo -ne '\n' | vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
   register: resultvim
-  sudo: no
   failed_when: ( resultvim.rc not in [0,1] )
+  sudo: no
 
 - name: compile_YCM
   shell: >
