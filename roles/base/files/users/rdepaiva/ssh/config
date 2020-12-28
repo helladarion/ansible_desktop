@@ -2,6 +2,7 @@ Host *
 KeepAlive yes
 ServerAliveInterval 60
 ServerAliveCountMax 2
+IdentitiesOnly=yes
 ForwardAgent=yes
 StrictHostKeyChecking no
 UserKnownHostsFile=/dev/null
@@ -182,9 +183,9 @@ ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 #
 
-Host pi-wifi-bridge
-Hostname 192.168.10.201
-User pi
+Host wifi-bridge
+Hostname 192.168.10.202
+User rdepaiva
 Port 22
 
 Host rafaelDigitalOcean
