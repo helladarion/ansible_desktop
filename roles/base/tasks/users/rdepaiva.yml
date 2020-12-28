@@ -23,16 +23,16 @@
 
 - name: users | rdepaiva | create .ssh directory
   file:
-    path: "{{ item.dir }}"
+    path: /home/rdepaiva/{{ item.dir }}
     state: directory
     owner: rdepaiva
     group: rdepaiva
     mode: 0700
   with_items:
     - { dir: '.bash' }
-    - { dir: '/home/rdepaiva/.ssh' }
-    - { dir: '/home/rdepaiva/.vim/colors' }
-    - { dir: '/home/rdepaiva/.vim/bundle' }
+    - { dir: '.ssh' }
+    - { dir: '.vim/colors' }
+    - { dir: '.vim/bundle' }
 
 - name: users | rdepaiva | add public key
   authorized_key:
