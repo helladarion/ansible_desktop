@@ -17,7 +17,7 @@
   roles:
     - base
 
-- hosts: workstation
+- hosts: localhost
   tags: workstation
   become: true
   roles:
