@@ -1,0 +1,54 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+## Getting into the shares
+alias storage='cd /mnt/storage/'
+
+alias extip='curl icanhazip.com'
+
+# Tab to Esc Alias
+alias tab='xmodmap ~/.speedswapper && echo "TabEsc Changed"'
+
+# xclip alias
+alias "cs=xclip -selection clipboard"
+alias "vs=xclip -o -selection clipboard"
+
+# some more ls aliases
+alias ll='ls'
+alias la='ls -A'
+alias l='ls -CF'
+alias l.=' ls -lhFa --time-style=long-iso --color=auto'
+alias ls=' ls -lhF --time-style=long-iso --color=auto'
+alias lsmount='mount |column -t'
+alias j='jobs -l'
+alias tn=' tmux new -s'
+
+## get top process eating memory
+alias mem5='ps auxf | sort -nr -k 4 | head -5'
+alias mem10='ps auxf | sort -nr -k 4 | head -10'
+
+## get top process eating cpu ##
+alias cpu5='ps auxf | sort -nr -k 3 | head -5'
+alias cpu10='ps auxf | sort -nr -k 3 | head -10'
+
+## List largest directories (aka "ducks")
+alias dir5='du -cksh * | sort -hr | head -n 5'
+alias dir10='du -cksh * | sort -hr | head -n 10'
+
+# Safetynets
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
