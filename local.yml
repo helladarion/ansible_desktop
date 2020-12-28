@@ -1,5 +1,5 @@
 # tasks to complete before running roles
-- hosts: all
+- hosts: "*"
   tags: always
   connection: local
   become: true
@@ -11,7 +11,7 @@
       changed_when: False
 
 # run roles
-- hosts: all
+- hosts: "*"
   tags: base
   become: true
   roles:
