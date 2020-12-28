@@ -16,6 +16,12 @@
   become: true
   roles:
     - base
+
+- hosts: workstation
+  tags: workstation
+  become: true
+  roles:
+    - workstation
 #  tasks:
 #    - include: tasks/users.yml
 #    - include: tasks/cron.yml

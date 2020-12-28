@@ -1,0 +1,5 @@
+/mnt/storage/work -fstype=nfs4,soft,intr,rsize=8192,wsize=8192 storage.homelab-rafa.io:/work
+/mnt/storage/study -fstype=nfs4,soft,intr,rsize=8192,wsize=8192 storage.homelab-rafa.io:/study
+/mnt/storage/media -fstype=nfs4,soft,intr,rsize=8192,wsize=8192 storage.homelab-rafa.io:/media
+/mnt/storage/personal -fstype=nfs4,soft,intr,rsize=8192,wsize=8192 storage.homelab-rafa.io:/personal
+

@@ -1,0 +1,5 @@
+- name: restart_autofs
+  tags: autofs,system,system setup
+  service:
+    name: autofs
+    state: restarted
