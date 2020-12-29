@@ -1,20 +1,6 @@
 - name: install regolith respository
   apt_repository: repo='ppa:regolith-linux/release' state=present
 
-# Docker Session
-- name: Add docker GPG apt key
-  apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
-
-- name: Add docker Repository
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-    state: present
-
-- name: Update apt and install docker
-  apt: update_cache=yes name=docker-ce state=latest
-
 - name: install Packages
   package:
     name:
@@ -27,7 +13,6 @@
       - glances
       - ranger
       - rsync
-      - docker-compose
       - curl
       - ssh
       - sshfs
