@@ -3,16 +3,20 @@
   apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
       state: present
+  when: docker is defined and docker == true
 
 - name: Add docker Repository
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
     state: present
+  when: docker is defined and docker == true
 
 - name: Update apt and install docker
   apt: update_cache=yes name=docker-ce state=latest
+  when: docker is defined and docker == true
 
 - name: Install docker-compose
   package:
     name:
       - docker-compose
+  when: docker is defined and docker == true

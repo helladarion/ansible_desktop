@@ -5,3 +5,4 @@ branch: master
 autofs: true
 minecraft: true
 authy: false
+docker: false
