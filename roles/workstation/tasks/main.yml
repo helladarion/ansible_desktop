@@ -5,6 +5,7 @@
 - block:
   ## system setup
   - import_tasks: system_setup/autofs.yml
+  - import_tasks: system_setup/tweaks.yml
 
   rescue:
     - set_fact: task_failed=true
