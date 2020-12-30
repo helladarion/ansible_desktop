@@ -1,0 +1,10 @@
+- name: install regolith respository
+  apt_repository: repo='ppa:regolith-linux/release' state=present
+  when: regolith is defined and regolith == true
+
+- name: install regolith package
+  package:
+    name:
+      - regolith-desktop-standard
+  when: regolith is defined and regolith == true
+

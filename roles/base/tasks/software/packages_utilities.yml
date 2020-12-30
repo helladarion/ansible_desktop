@@ -1,12 +1,8 @@
-- name: install regolith respository
-  apt_repository: repo='ppa:regolith-linux/release' state=present
-
 - name: install Packages
   package:
     name:
       - htop
       - tmux
-      - regolith-desktop-standard
       - lsof
       - neofetch
       - iotop

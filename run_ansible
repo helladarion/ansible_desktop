@@ -5,4 +5,4 @@ sudo apt update
 sudo apt install -y ansible git chrony
 # Be sure we have the date and time synced
 sudo chronyd -q
-sudo ansible-pull -vvv -U https://github.com/helladarion/ansible_desktop.git
+sudo ansible-pull -v -U https://github.com/helladarion/ansible_desktop.git
