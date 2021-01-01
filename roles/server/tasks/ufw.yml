@@ -1,0 +1,86 @@
+- name: ufw | install package
+  tags: ufw
+  package:
+    state: latest
+    name: ufw
+  notify:
+    - restart_ufw
+
+# dns
+- name: ufw | dns | allow dns (tcp)
+  tags: ufw
+  ufw:
+    comment: dns
+    rule: allow
+    port: '53'
+    proto: tcp
+  when:
+    - dns_server is defined
+    - dns_server == true
+
+- name: ufw | dns | allow dns (udp)
+  tags: ufw
+  ufw:
+    comment: dns
+    rule: allow
+    port: '53'
+    proto: udp
+  when:
+    - dns_server is defined
+    - dns_server == true
+
+# k8s
+#- name: ufw | k8s | allow api server (master)
+#  tags: ufw
+#  ufw:
+#    comment: k8s master api server
+#    rule: allow
+#    port: '6443'
+#    proto: tcp
+#    src: 172.16.249.0/24
+#  when:
+#    - k8s_master is defined
+#    - k8s_master == true
+
+# minecraft
+- name: ufw | minecraft | allow server
+  tags: ufw
+  ufw:
+    comment: minecraft
+    rule: allow
+    port: '25565'
+    proto: tcp
+  when:
+    - minecraft_server is defined
+    - minecraft_server == true
+
+# openssh
+#- name: ufw | openssh | allow ssh (external)
+#  tags: ufw
+#  ufw:
+#    comment: ssh from home network
+#    rule: allow
+#    port: ssh
+#    src: 173.10.59.105/32
+#  when:
+#    - linode_instance is defined
+#    - linode_instance == true
+
+- name: ufw | openssh | allow ssh (internal)
+  tags: ufw
+  ufw:
+    comment: ssh
+    rule: allow
+    port: ssh
+    src: '{{ item }}'
+  loop:
+    - 10.0.10.0/24
+    - 192.168.10.0/24
+  when:
+    - linode_instance is defined
+    - linode_instance == false
+
+# all rules set, enable
+- name: ufw | enable firewall
+  ufw:
+    state: enabled
