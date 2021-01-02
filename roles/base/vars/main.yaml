@@ -1,2 +1,2 @@
-rdepaiva_password: $1$R2ZUz0A6$eIygZwxrLWv2lFYIFTcXD1
+rdepaiva_password: "{{ vault_rdepaiva_password }}"
 swapness_value: 5

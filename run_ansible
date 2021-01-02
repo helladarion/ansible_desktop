@@ -5,4 +5,5 @@ sudo apt update
 sudo apt install -y ansible git chrony
 # Be sure we have the date and time synced
 sudo chronyd -q
+export VAULT_PASSWORD=my_vault_password
 sudo ansible-pull -v -U https://github.com/helladarion/ansible_desktop.git

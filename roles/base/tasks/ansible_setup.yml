@@ -46,3 +46,27 @@
     owner: root
     group: root
     mode: 0644
+
+- name: ansible setup | set vault_key wrapper in place
+  tags: ansible-setup
+  copy:
+    src: files/ansible_setup/vault_key
+    dest: /home/rdepaiva/.vault_key
+    owner: root
+    group: root
+    mode: 0755
+
+- name: ansible setup | remove default ansible directory (/etc/ansible) from host
+  tags: ansible,ansible-setup
+  file:
+    path: /etc/ansible
+    state: absent
+
+- name: ansible setup | generate provision script from template
+  tags: ansible,ansible-setup,scripts
+  template:
+    src: provision.sh.j2
+    dest: /usr/local/bin/provision
+    owner: root
+    group: root
+    mode: 0755

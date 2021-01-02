@@ -1,6 +1,8 @@
-- name: install cron job (ansible-pull)
+- name: system setup | cron | schedule automatic ansible provisioning
+  tags: cron
   cron:
-    user: ansible
     name: "ansible provision"
-    minute: "*/10"
-    job: "/usr/bin/ansible-pull -o -U https://github.com/helladarion/ansible_desktop.git >/var/log/ansible_provision.log"
+    user: ansible
+    hour: "{{ ansible_cron_hour | default('*') }}"
+    minute: "{{ ansible_cron_minute | default('*/30') }}"
+    job: "/usr/local/bin/provision > /dev/null"
