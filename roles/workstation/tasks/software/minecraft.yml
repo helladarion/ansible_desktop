@@ -6,3 +6,10 @@
     method: user
     state: present
   when: minecraft is defined and minecraft == true
+
+- name: software | minecraft | multimc
+  tags: packages,games,minecraft,workstation-packages
+  become_user: rdepaiva
+  apt:
+    deb: https://files.multimc.org/downloads/multimc_1.4-1.deb
+  when: minecraft is defined and minecraft == true

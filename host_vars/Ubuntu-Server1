@@ -3,7 +3,8 @@ branch: master
 
 ansible_cron_minute: "40"
 ssh_port: 22
-ssh_users: "user1 user2"
+ssh_users: "rdepaiva"
+passwd_auth: no
 
 # platform-specific
 linode_instance: false
@@ -14,4 +15,4 @@ raspberry_pi: false
 
 # server
 unattended_upgrades: true
-web_server: true
+web_server: false
