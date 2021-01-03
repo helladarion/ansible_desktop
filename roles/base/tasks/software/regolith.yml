@@ -6,5 +6,6 @@
   package:
     name:
       - regolith-desktop-standard
+      - gdm3
   when: regolith is defined and regolith == true
 
