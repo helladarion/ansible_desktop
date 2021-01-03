@@ -28,16 +28,6 @@
     state: touch
   changed_when: False
 
-- name: ansible setup | create ansible_provision log file
-  tags: ansible,ansible-setup
-  file:
-    path: /var/log/ansible_provision.log
-    owner: ansible
-    group: ansible
-    mode: 0664
-    state: touch
-  changed_when: False
-
 - name: ansible setup | add logrotate config for ansible log file
   tags: ansible-setup
   copy:
