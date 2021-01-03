@@ -5,6 +5,9 @@
     name: ufw
   notify:
     - restart_ufw
+  when:
+    - ufw is defined
+    - ufw == true
 
 # dns
 - name: ufw | dns | allow dns (tcp)
@@ -17,6 +20,8 @@
   when:
     - dns_server is defined
     - dns_server == true
+    - ufw is defined
+    - ufw == true
 
 - name: ufw | dns | allow dns (udp)
   tags: ufw
@@ -28,6 +33,8 @@
   when:
     - dns_server is defined
     - dns_server == true
+    - ufw is defined
+    - ufw == true
 
 # k8s
 #- name: ufw | k8s | allow api server (master)
@@ -79,8 +86,13 @@
   when:
     - linode_instance is defined
     - linode_instance == false
+    - ufw is defined
+    - ufw == true
 
 # all rules set, enable
 - name: ufw | enable firewall
   ufw:
     state: enabled
+  when:
+    - ufw is defined
+    - ufw == true
