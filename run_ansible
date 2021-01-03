@@ -5,5 +5,5 @@ sudo apt update
 sudo apt install -y ansible git chrony
 # Be sure we have the date and time synced
 sudo chronyd -q
-ansible-pull -v -U https://github.com/helladarion/ansible_desktop.git | tee first_run_ansible.log
+ansible-pull -U https://github.com/helladarion/ansible_desktop.git | tee first_run_ansible.log
 

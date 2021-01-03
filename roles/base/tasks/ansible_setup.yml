@@ -47,15 +47,6 @@
     group: root
     mode: 0644
 
-- name: ansible setup | set vault_key wrapper in place
-  tags: ansible-setup
-  copy:
-    src: files/ansible_setup/vault_key
-    dest: /home/rdepaiva/.vault_key
-    owner: root
-    group: root
-    mode: 0755
-
 - name: ansible setup | remove default ansible directory (/etc/ansible) from host
   tags: ansible,ansible-setup
   file:
