@@ -1,2 +1,3 @@
 autofs_master_config: /etc/auto.master
 autofs_nfs_config: /etc/auto.nfs
+steam_package: steam-installer
