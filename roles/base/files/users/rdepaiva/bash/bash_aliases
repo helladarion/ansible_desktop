@@ -23,6 +23,9 @@ alias "cs=xclip -selection clipboard"
 alias "vs=xclip -o -selection clipboard"
 
 # some more ls aliases
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
 alias ll='ls'
 alias la='ls -A'
 alias l='ls -CF'
