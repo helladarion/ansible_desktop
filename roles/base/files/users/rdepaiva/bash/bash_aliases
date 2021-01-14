@@ -55,3 +55,7 @@ alias rm='rm -I --preserve-root'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+
+# rsync copy and mv
+alias rscp='rsync -aP'
+alias rsmv='rsync -aP --remove-source-files'
