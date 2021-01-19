@@ -2,6 +2,7 @@
   package:
     name:
       - htop
+      - fzf
       - tmux
       - lsof
       - neofetch
