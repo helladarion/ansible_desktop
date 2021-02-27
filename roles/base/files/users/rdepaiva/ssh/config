@@ -7,7 +7,6 @@ ForwardAgent=yes
 StrictHostKeyChecking no
 UserKnownHostsFile=/dev/null
 LogLevel ERROR
-#ProxyCommand ssh $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:/ -p /') exec nc -w1 $(echo %h | sed 's/^.*+//;/:/!s/$/ %p/;s/:/ /')
 
 ControlMaster auto
 ControlPath ~/.ssh/control:%h:%p:%r
@@ -18,22 +17,6 @@ User rdepaiva
 Port 22
 ProxyCommand ssh -W %h:%p dev
 #ProxyCommand ssh rdepaiva@bastion.dev1.nakika.tv nc %h %p %r
-
-#Host beer
-#Hostname beer.prod1.nakika.tv
-#User rdepaiva
-#Port 22
-##LogLevel QUIET
-#ProxyCommand ssh -W %h:%p prod
-#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
-#
-#Host beer.prod1.nakika.tv
-#LogLevel QUIET
-
-#Host casa
-#Hostname rafael.dnsfor.me
-#User rafael
-#Port 3851
 
 Host jump
 LogLevel QUIET
@@ -51,6 +34,11 @@ Host appproxy
 User rdepaiva
 Hostname appliance-app.prod1.nakika.tv
 DynamicForward 9999
+
+Host appproxy2
+User rdepaiva
+Hostname bastion.prod1.nakika.tv
+DynamicForward 3128
 
 Host devproxy
 User rdepaiva
@@ -104,11 +92,12 @@ Hostname appliance-nfs01.prod1.nakika.tv
 ProxyJump app
 
 Host loghost
-Hostname loghost
+Hostname appliance-loghost
 User rdepaiva
 Port 22
 LogLevel QUIET
-ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host ??-??-??-??-??-??
 User rdepaiva
@@ -118,12 +107,12 @@ Port 22
 ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
-Host whiskey
-Hostname whiskey
-User rdepaiva
-Port 22
-LogLevel QUIET
-ProxyJump app
+#Host whiskey
+#Hostname whiskey
+#User rdepaiva
+#Port 22
+#LogLevel QUIET
+#ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host yvrrafa
@@ -152,7 +141,7 @@ ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host c7vm
-Hostname 08-00-27-4d-7c-16
+Hostname 6e-6a-a2-2f-8d-0a
 User rdepaiva
 Port 22
 #LogLevel QUIET
@@ -160,7 +149,7 @@ ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host sl6vm
-Hostname 08-00-27-3e-f9-4b
+Hostname 0a-91-97-8d-e1-ce
 User rdepaiva
 Port 22
 #LogLevel QUIET
