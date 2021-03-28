@@ -6,10 +6,26 @@ IdentitiesOnly=yes
 ForwardAgent=yes
 StrictHostKeyChecking no
 UserKnownHostsFile=/dev/null
+Identityfile ~/.ssh/id_rsa
 LogLevel ERROR
+
+#Host bitbucket.org
+#IdentityFile ~/.ssh/id_ed25519
 
 ControlMaster auto
 ControlPath ~/.ssh/control:%h:%p:%r
+
+Host ??-??-??-??-??-??.vps
+LogLevel QUIET
+ProxyCommand ssh root@zayo 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
+
+Host zayo
+Hostname zayovps.envysion.com
+User root
+Port 22
+
+Host *.zayo
+ProxyCommand ssh -W $(basename %h .zayo):%p zayo
 
 Host devpca
 Hostname ps01.dev1.nakika.tv
@@ -23,6 +39,7 @@ LogLevel QUIET
 User rdepaiva
 #Hostname jump.appliance.envysion.com
 Hostname appliance-jump.prod1.nakika.tv
+ProxyJump prod
 
 Host app
 #LogLevel QUIET
@@ -51,6 +68,21 @@ Hostname appliance-aux01.prod1.nakika.tv
 ProxyJump prod
 DynamicForward 9999
 
+Host appliance-aux01.prod
+User rdepaiva
+Hostname appliance-aux01.prod1.nakika.tv
+ProxyJump prod
+
+Host appliance-aux01.dev
+User rdepaiva
+Hostname appliance-aux01.dev1.nakika.tv
+ProxyJump dev
+
+Host appliance-aux01.test
+User rdepaiva
+Hostname appliance-aux01.test1.nakika.tv
+ProxyJump test
+
 Host appdev
 LogLevel QUIET
 User rdepaiva
@@ -66,18 +98,17 @@ ProxyJump test
 Host *.build02
 ProxyCommand ssh -W $(basename %h .build02):%p build02
 
-Host *.auxprod
-ProxyCommand ssh -W $(basename %h .auxprod):%p appliance-aux01.prod
+Host ??-??-??-??-??-??.auxprod
+LogLevel QUIET
+ProxyCommand ssh root@appliance-aux01.prod 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
 
-Host *.auxdev
-User rdepaiva
-Port 22
-ProxyCommand ssh -W $(basename %h .auxdev):%p appliance-aux01.dev
+Host ??-??-??-??-??-??.auxdev
+LogLevel QUIET
+ProxyCommand ssh root@appliance-aux01.dev 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
 
-Host *.auxtest
-User rdepaiva
-Port 22
-ProxyCommand ssh -W $(basename %h .auxtest):%p appliance-aux01.test
+Host ??-??-??-??-??-??.auxtest
+LogLevel QUIET
+ProxyCommand ssh root@appliance-aux01.test 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
 
 Host ps01
 LogLevel QUIET

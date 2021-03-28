@@ -3,3 +3,5 @@
 [user]
 	name = rdepaiva
 	email = rdepaiva@envysion.com
+[core]
+	excludesfile = /home/rdepaiva/.gitignore

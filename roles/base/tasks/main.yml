@@ -10,6 +10,9 @@
   # Set up the ansible environment
   - import_tasks: ansible_setup.yml
 
+  # Set up the hosts for terraform
+  - import_tasks: hosts.yml
+
   # install software
   - import_tasks: software/packages_utilities.yml
   - import_tasks: software/packages_development.yml

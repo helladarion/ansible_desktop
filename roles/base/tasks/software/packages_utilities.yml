@@ -5,6 +5,7 @@
       - fzf
       - ripgrep
       - tmux
+      - tmate
       - lsof
       - neofetch
       - iotop

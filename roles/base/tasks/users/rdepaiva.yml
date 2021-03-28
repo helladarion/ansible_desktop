@@ -40,6 +40,7 @@
     key: "{{ item }}"
   with_file:
     - users/rdepaiva/ssh/id_rsa.pub
+    - users/rdepaiva/ssh/id_ed25519.pub
 
 - name: users | rdepaiva | copy tmux config (workstation version)
   copy:
@@ -96,6 +97,9 @@
     - { src: 'bash/bash_aliases', dest: '.bash/bash_aliases' }
     - { src: 'bash/bash_functions', dest: '.bash/bash_functions' }
     - { src: 'git/gitconfig', dest: '.gitconfig' }
+    - { src: 'git/gitignore', dest: '.gitignore' }
+    - { src: 'terraform/terraformrc', dest: '.terraformrc' }
+    - { src: 'tmate/tmate.conf', dest: '.tmate.conf' }
     - { src: 'speedswapper', dest: '.speedswapper' }
     - { src: 'bash/bashrc', dest: '.bashrc' }
     - { src: 'vim/vimrc', dest: '.vimrc' }

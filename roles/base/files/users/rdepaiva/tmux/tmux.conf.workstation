@@ -8,19 +8,9 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 # for vim
 set -g @resurrect-strategy-vim 'session'
 
-# increase scrollback buffer size
-set -g history-limit 50000
+set -g history-limit 20000
 
-# tmux messages are displayed for 4 seconds
-set -g display-time 4000
-
-# Key bindings for copy-paste
 set -g mode-keys vi
-unbind p
-bind p paste-buffer
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-
 # automatically renumber tmux windows
 set -g renumber-windows on
 
@@ -45,19 +35,7 @@ unbind '"'
 unbind %
 
 # reload config file (change file location to your the tmux.conf you want to use)
-bind-key r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded."
-
-# Shift arrow to switch windows
-bind -n S-Left  previous-window
-bind -n S-Right next-window
-
-# Window activity monitor
-setw -g monitor-activity on
-set -g visual-activity on
-
-# Easily reorder windows with CTRL+SHIFT+Arrow
-bind-key -n C-S-Left swap-window -t -1
-bind-key -n C-S-Right swap-window -t +1
+bind r source-file ~/.tmux.conf
 
 # switch panes using Alt-arrow without prefix
 #bind -n M-Left select-pane -L
@@ -73,6 +51,10 @@ set -g mouse on
 #set -g mouse-select-pane on
 #set -g mouse-resize-pane on
 #set -g default-terminal "xterm-256color"
+
+# Activity notify
+setw -g monitor-activity on
+set -g visual-activity on
 
 # pane movement shortcuts
 bind -n M-h select-pane -L
