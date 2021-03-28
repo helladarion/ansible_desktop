@@ -1,6 +1,9 @@
+#!/bin/bash
+
 usermod -aG input rdepaiva
 
-echo "KERNEL=="uinput", GROUP="input", mode="0660" > /etc/udev/rules.d/85-sunshine-input.rules
+echo "KERNEL=='uinput', GROUP='input', mode='0660'" > /etc/udev/rules.d/85-sunshine-input.rules
 
+mkdir -p /home/rdepaiva/.config/systemd/user
 cp sunshine.service /home/rdepaiva/.config/systemd/user/
 systemctl --user start sunshine
