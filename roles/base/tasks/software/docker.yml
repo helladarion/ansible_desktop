@@ -20,3 +20,7 @@
     name:
       - docker-compose
   when: docker is defined and docker == true
+
+- name: docker setup | making normal user able to run docker
+  command: groupadd docker; usermod -aG docker rdepaiva
+  when: docker is defined and docker == true
