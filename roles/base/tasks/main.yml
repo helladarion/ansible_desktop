@@ -18,6 +18,7 @@
   - import_tasks: software/packages_development.yml
   - import_tasks: software/docker.yml
   - import_tasks: software/regolith.yml
+  - import_tasks: software/sunshine.yml
 #- import_tasks: software/spacevim.yml
 
   # Perform remaining tasks:
