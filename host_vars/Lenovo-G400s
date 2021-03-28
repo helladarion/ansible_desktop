@@ -1,0 +1,16 @@
+---
+branch: main
+
+ansible_cron_minute: "40"
+ssh_port: 22
+ssh_users: "rdepaiva"
+passwd_auth: no
+
+# application selection
+autofs: true
+minecraft: false
+authy: true
+docker: true
+regolith: false
+steam: false
+sunshine: false
