@@ -51,6 +51,11 @@
     - { src: 'sunshine.service', dest: '.config/systemd/user/sunshine.service' }
   when: sunshine is defined and sunshine == true
 
+- name: sunshine setup | compiling sunshine
+  command: bash /tmp/sunshine.sh
+  become: false
+  when: sunshine is defined and sunshine == true
+
 - name: sunshine setup | copying config files
   copy:
     src: sunshine/{{ item.src }}
@@ -58,11 +63,6 @@
   when: stat_result.stat.exists
   with_items:
     - { src: 'sunshine.conf' }
-  when: sunshine is defined and sunshine == true
-
-- name: sunshine setup | compiling sunshine
-  command: bash /tmp/sunshine.sh
-  become: false
   when: sunshine is defined and sunshine == true
 
 - name: sunshine setup | starting sunshine service
