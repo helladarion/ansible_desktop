@@ -33,6 +33,7 @@
     - { dir: '.ssh' }
     - { dir: '.vim/colors' }
     - { dir: '.vim/bundle' }
+    - { dir: 'Games' }
 
 - name: users | rdepaiva | add public key
   authorized_key:
