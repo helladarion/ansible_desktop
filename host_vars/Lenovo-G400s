@@ -1,6 +1,7 @@
 ---
 branch: main
 
+ansible_cron_hour: "0"
 ansible_cron_minute: "40"
 ssh_port: 22
 ssh_users: "rdepaiva"
@@ -13,4 +14,4 @@ authy: true
 docker: true
 regolith: false
 steam: false
-sunshine: false
+sunshine: true
