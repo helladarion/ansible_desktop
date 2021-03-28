@@ -13,3 +13,4 @@ authy: false
 docker: false
 regolith: false
 steam: true
+sunshine: true

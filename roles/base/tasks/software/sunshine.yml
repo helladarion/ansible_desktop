@@ -1,0 +1,28 @@
+- name: install sunshine requirements
+  package:
+    name:
+      - cmake
+      - libssl-dev
+      - libavdevice-dev
+      - libboost-thread-dev
+      - libboost-filesystem-dev
+      - libboost-log-dev
+      - libpulse-dev
+      - libopus-dev
+      - libxtst-dev
+      - libx11-dev
+      - libxfixes-dev
+      - libevdev-dev
+      - libxcb1-dev
+      - libxcb-shm0-dev
+      - libxcb-xfixes0-dev
+  when: sunshine is defined and sunshine == true
+
+- name: Clone sunshine repo with separate git directory
+  ansible.builtin.git:
+    repo: https://github.com/loki-47-6F-64/sunshine.git
+    clone: yes
+    recursive: yes
+    track_submodules: yes
+    dest: /home/rdepaiva/Documents/sunshine
+  when: sunshine is defined and sunshine == true
