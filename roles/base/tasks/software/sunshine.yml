@@ -23,6 +23,7 @@
     repo: https://github.com/loki-47-6F-64/sunshine.git
     clone: yes
     recursive: yes
+    update: no
     track_submodules: yes
     dest: /home/rdepaiva/Games/sunshine
   when: sunshine is defined and sunshine == true
