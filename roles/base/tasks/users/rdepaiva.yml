@@ -33,6 +33,7 @@
     - { dir: '.ssh' }
     - { dir: '.vim/colors' }
     - { dir: '.vim/bundle' }
+    - { dir: '.vim/undodir' }
     - { dir: 'Games' }
 
 - name: users | rdepaiva | add public key
