@@ -23,4 +23,5 @@
 
 - name: docker setup | making normal user able to run docker
   command: usermod -aG docker rdepaiva
+  become: true
   when: docker is defined and docker == true
