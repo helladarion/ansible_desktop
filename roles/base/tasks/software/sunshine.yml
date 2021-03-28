@@ -29,10 +29,21 @@
   become: false
   when: sunshine is defined and sunshine == true
 
+- name: sunshine setup | adding submodules
+  shell: git submodule update --init --recursive --depth 50
+  args:
+      chdir: /home/rdepaiva/Games/sunshine
+
 - name: sunshine setup | putting script in place
   template:
       src: sunshine.sh.j2
       dest: /tmp/sunshine.sh
+  when: sunshine is defined and sunshine == true
+
+- name: sunshine root setup | putting script in place
+  template:
+      src: sunshine_root.sh.j2
+      dest: /tmp/sunshine_root.sh
   when: sunshine is defined and sunshine == true
 
 - name: sunshine setup | copying config files
@@ -47,6 +58,10 @@
 
 - name: sunshine setup | compiling sunshine
   command: bash /tmp/sunshine.sh
-  become: true
+  become: false
   when: sunshine is defined and sunshine == true
 
+- name: sunshine setup | configuring sunshine root
+  command: bash /tmp/sunshine_root.sh
+  become: true
+  when: sunshine is defined and sunshine == true
