@@ -26,6 +26,9 @@
     update: no
     track_submodules: yes
     dest: /home/rdepaiva/Games/sunshine
+    owner: rdepaiva
+    group: rdepaiva
+    mode: 0755
   when: sunshine is defined and sunshine == true
 
 - name: sunshine setup | putting script in place
