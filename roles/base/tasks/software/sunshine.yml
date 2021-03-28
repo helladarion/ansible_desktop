@@ -46,5 +46,6 @@
 
 - name: sunshine setup | compiling sunshine
   command: bash /tmp/sunshine.sh
+  become: true
   when: sunshine is defined and sunshine == true
 
