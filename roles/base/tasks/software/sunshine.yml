@@ -36,7 +36,7 @@
 
 - name: sunshine setup | copying config files
   copy:
-    src: ansible/{{ item.src }}
+    src: sunshine/{{ item.src }}
     dest: /home/rdepaiva/Games/sunshine/{{ item.src }}
   when: stat_result.stat.exists
   with_items:
