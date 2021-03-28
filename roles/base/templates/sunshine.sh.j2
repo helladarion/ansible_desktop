@@ -1,11 +1,11 @@
 #!/bin/bash
 
-cd ${HOME}/Games/sunshine && mkdir build && cd build
+cd /home/rdepaiva/Games/sunshine && mkdir build && cd build
 cmake ..
 make -j 2
 
-usermod -a -G $USER
+usermod -a -G rdepaiva
 echo "KERNEL=="uinput", GROUP="input", mode="0660" > /etc/udev/rules.d/85-sunshine-input.rules
 
-cp sunshine.service $HOME/.config/systemd/user/
+cp sunshine.service /home/rdepaiva/.config/systemd/user/
 systemctl --user start sunshine
