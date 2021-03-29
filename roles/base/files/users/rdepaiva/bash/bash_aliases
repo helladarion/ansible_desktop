@@ -12,6 +12,8 @@ fi
 
 ## Getting into the shares
 alias storage='cd /mnt/storage/'
+alias work='cd /mnt/storage/work/envysion'
+alias projects='cd /mnt/storage/study/projects'
 
 alias extip='curl icanhazip.com'
 
