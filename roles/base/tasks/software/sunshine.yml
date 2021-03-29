@@ -56,7 +56,6 @@
   stat:
     path: /home/rdepaiva/Games/sunshine/build/sunshine.service
   register: sunshine_done
-  when: sunshine is defined and sunshine == true
 
 - name: sunshine setup | compiling sunshine
   command: bash /tmp/sunshine.sh
