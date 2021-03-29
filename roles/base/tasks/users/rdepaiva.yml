@@ -98,6 +98,7 @@
     mode: 0600
   with_items:
     - { src: 'bash/bash_aliases', dest: '.bash/bash_aliases' }
+    - { src: 'bash/bash_prompt', dest: '.bash/bash_prompt' }
     - { src: 'bash/bash_functions', dest: '.bash/bash_functions' }
     - { src: 'git/gitconfig', dest: '.gitconfig' }
     - { src: 'git/gitignore', dest: '.gitignore' }
