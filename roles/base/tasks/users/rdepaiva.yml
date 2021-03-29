@@ -98,6 +98,7 @@
     mode: 0600
   with_items:
     - { src: 'bash/bash_aliases', dest: '.bash/bash_aliases' }
+    - { src: 'bash/bash_profile', dest: '.bash_profile' }
     - { src: 'bash/bash_prompt', dest: '.bash/bash_prompt' }
     - { src: 'bash/bash_functions', dest: '.bash/bash_functions' }
     - { src: 'git/gitconfig', dest: '.gitconfig' }
@@ -106,6 +107,7 @@
     - { src: 'tmate/tmate.conf', dest: '.tmate.conf' }
     - { src: 'speedswapper', dest: '.speedswapper' }
     - { src: 'bash/bashrc', dest: '.bashrc' }
+    - { src: 'bash/profile', dest: '.profile' }
     - { src: 'vim/vimrc', dest: '.vimrc' }
     - { src: 'ssh/config', dest: '.ssh/config' }
 

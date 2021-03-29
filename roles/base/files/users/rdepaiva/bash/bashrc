@@ -11,6 +11,15 @@ source ~/.bash/bash_aliases
 # Source bash functions
 source ~/.bash/bash_functions
 
+# Show system information at login
+if [ -t 0 ]; then
+    if type -p "neofetch" > /dev/null; then
+        neofetch
+    else
+        echo "Warning: neofetch was called, but it's not installed."
+    fi
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -21,8 +30,14 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# Set history format to include timestamps
+HISTTIMEFORMAT="%Y-%m-%d %T "
+
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# Correct simple errors while using cd
+shopt -s cdspell
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -31,6 +46,18 @@ HISTFILESIZE=2000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Add /home/$USER/bin to $PATH
+case :$PATH: in
+	*:/home/$USER/bin:*) ;;
+	*) PATH=/home/$USER/bin:$PATH ;;
+esac
+
+# Add /home/$USER/.local/bin to $PATH
+case :$PATH: in
+	*:/home/$USER/.local/bin:*) ;;
+	*) PATH=/home/$USER/.local/bin:$PATH ;;
+esac
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -109,11 +136,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/rdepaiva/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/rdepaiva/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/rdepaiva/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rdepaiva/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+## The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/home/rdepaiva/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/rdepaiva/Downloads/google-cloud-sdk/path.bash.inc'; fi
+#
+## The next line enables shell command completion for gcloud.
+#if [ -f '/home/rdepaiva/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rdepaiva/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
 # reload bash config
 alias reload="source ~/.bashrc"
