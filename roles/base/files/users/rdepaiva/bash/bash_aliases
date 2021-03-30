@@ -20,6 +20,9 @@ alias extip='curl icanhazip.com'
 # Tab to Esc Alias
 alias tab='xmodmap ~/.speedswapper && echo "TabEsc Changed"'
 
+# Setting audio output to the headset
+alias fixaudio='pactl set-default-sink alsa_output.usb-Logitech_Inc._Logitech_USB_Headset_H340-00.analog-stereo'
+
 # xclip alias
 alias "cs=xclip -selection clipboard"
 alias "vs=xclip -o -selection clipboard"
