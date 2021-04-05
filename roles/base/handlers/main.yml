@@ -20,9 +20,13 @@
     group: rdepaiva
     recurse: true
 
+- name: install_fzf
+  command: ~/.fzf/install
+
 - name: update_menlo_cache_fonts
   command: >
       fc-cache -f -v
+
 - name: install_vundle_plugins
   shell: >
       echo -ne '\n' | vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa

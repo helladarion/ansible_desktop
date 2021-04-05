@@ -60,6 +60,13 @@
     force: yes
   notify: update_menlo_cache_fonts
 
+- name: users | rdepaiva | clone tmux-tpm plugin repository
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: /home/rdepaiva/.tmux/plugins/tpm
+    force: yes
+  notify: update_tmux_plugin_perms
+
 - name: users | rdepaiva | clone tmux-sensible plugin repository
   git:
     repo: https://github.com/tmux-plugins/tmux-sensible.git
@@ -88,6 +95,14 @@
     force: yes
   notify: update_vim_bundle_perms
       #- compile_YCM
+
+  # fzf
+- name: users | rdepaiva | Fzf
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: /home/rdepaiva/.fzf
+    force: yes
+  notify: install_fzf
 
 - name: users | rdepaiva | copy dotfiles
   copy:

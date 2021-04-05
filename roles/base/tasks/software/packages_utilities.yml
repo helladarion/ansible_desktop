@@ -3,9 +3,10 @@
     name:
       - htop
       - expect
-      - fzf
       - ripgrep
       - tmux
+      - xclip
+      - xsel
       - tmate
       - atop
       - lsof
