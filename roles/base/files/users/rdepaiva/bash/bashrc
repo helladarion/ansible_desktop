@@ -3,8 +3,7 @@
 # for examples
 
 # Fuzzy Finder
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # source bash prompt
 source ~/.bash/bash_prompt
