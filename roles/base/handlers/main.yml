@@ -21,6 +21,7 @@
     recurse: true
 
 - name: install_fzf
+  become: true
   command: /home/rdepaiva/.fzf/install
 
 - name: update_menlo_cache_fonts
