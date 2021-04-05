@@ -31,7 +31,7 @@
   with_items:
     - { dir: '.bash' }
     - { dir: '.ssh' }
-    - { dir: '.tmux/ressurect' }
+    - { dir: '.tmux/resurrect' }
     - { dir: '.vim/colors' }
     - { dir: '.vim/bundle' }
     - { dir: '.vim/undodir' }
