@@ -2,6 +2,7 @@
   package:
     name:
       - htop
+      - expect
       - fzf
       - ripgrep
       - tmux
