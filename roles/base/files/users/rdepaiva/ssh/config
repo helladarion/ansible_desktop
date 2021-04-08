@@ -216,14 +216,6 @@ Port 22
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host gigabyte
-Hostname 40-8d-5c-f4-b4-68
-User rdepaiva
-Port 22
-#LogLevel QUIET
-ProxyJump app
-#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
-
-Host gigabyte-office
 Hostname 40-8d-5c-f4-b1-72
 User rdepaiva
 Port 22
