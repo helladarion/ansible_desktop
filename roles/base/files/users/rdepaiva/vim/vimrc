@@ -156,16 +156,27 @@ let g:SimpylFold_docstring_preview=1
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" ----- altercation/vim-colors-solarized settings -----
-" Toggle this to "light" for light colorscheme
-set background=dark
-"set background=light
 
+" working on transparency
+highlight Normal        ctermbg=NONE guibg=NONE
+highlight LineNr        ctermbg=NONE guibg=NONE
+highlight SignColumn    ctermbg=NONE guibg=NONE
 " Uncomment the next line if your terminal is not configured for solarized
 "let g:solarized_termcolors=256
 "let base16colorspace=256
 let g:gruvbox_termcolors=256
+let g:gruvbox_transparent_bg=1
+let g:gruvbox_contrast_dark="soft"
+" let g:gruvbox_invert_tabline=1
+" let g:gruvbox_cursor_column="grey"
+" let g:gruvbox_selection_bg="grey"
 
+autocmd VimEnter * hi Normal ctermbg=none
+" ----- altercation/vim-colors-solarized settings -----
+" Toggle this to "light" for light colorscheme
+set background=dark
+"set background=light
+"
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
