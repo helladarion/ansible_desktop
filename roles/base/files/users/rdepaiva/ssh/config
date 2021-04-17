@@ -45,7 +45,7 @@ Host app
 #LogLevel QUIET
 User rdepaiva
 Hostname appliance-app.prod1.nakika.tv
-ProxyJump prod
+#ProxyJump prod
 
 Host appproxy
 User rdepaiva
