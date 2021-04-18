@@ -21,6 +21,7 @@
       - wget
       - makepasswd
       - cmake
+      - zathura
       - fonts-powerline
       - gnome-system-monitor
       - "{{ vim_package }}"
