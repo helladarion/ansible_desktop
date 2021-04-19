@@ -331,7 +331,8 @@ ProxyCommand ssh -W $(basename %h):%p dev
 Host dev
 LogLevel QUIET
 User rdepaiva
-Hostname bastion.dev1.nakika.tv
+#Hostname bastion.dev1.nakika.tv
+Hostname appliance-app.dev1.nakika.tv
 
 Host *.dev
 User rdepaiva
