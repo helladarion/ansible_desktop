@@ -239,6 +239,14 @@ Port 22
 ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
+Host nuc7
+Hostname 1c-69-7a-64-97-18
+User rdepaiva
+Port 22
+#LogLevel QUIET
+ProxyJump app
+#ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
+
 Host build02
 Hostname build02-tun0.prod1
 User rdepaiva
