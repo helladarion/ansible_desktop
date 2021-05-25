@@ -39,7 +39,7 @@ LogLevel QUIET
 User rdepaiva
 #Hostname jump.appliance.envysion.com
 Hostname appliance-jump.prod1.nakika.tv
-ProxyJump prod
+#ProxyJump prod
 
 Host app
 #LogLevel QUIET
