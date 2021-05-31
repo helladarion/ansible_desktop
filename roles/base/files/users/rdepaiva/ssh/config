@@ -180,7 +180,7 @@ ProxyJump app
 #ProxyCommand ssh rdepaiva@beer.prod1.nakika.tv nc %h %p %r
 
 Host sl6vm
-Hostname 0a-91-97-8d-e1-ce
+Hostname 08-00-27-17-88-C4
 User rdepaiva
 Port 22
 #LogLevel QUIET
