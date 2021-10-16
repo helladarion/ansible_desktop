@@ -65,29 +65,29 @@ DynamicForward 3128
 Host auxproxy
 User rdepaiva
 Hostname appliance-aux01.prod1.nakika.tv
-ProxyJump prod
+#ProxyJump prod
 DynamicForward 9999
 
 Host appliance-aux01.prod
 User rdepaiva
 Hostname appliance-aux01.prod1.nakika.tv
-ProxyJump prod
+#ProxyJump prod
 
 Host appliance-aux01.dev
 User rdepaiva
 Hostname appliance-aux01.dev1.nakika.tv
-ProxyJump dev
+#ProxyJump dev
 
 Host appliance-aux01.test
 User rdepaiva
 Hostname appliance-aux01.test1.nakika.tv
-ProxyJump test
+#ProxyJump test
 
 Host appdev
 LogLevel QUIET
 User rdepaiva
 Hostname appliance-app.dev1.nakika.tv
-ProxyJump dev
+#ProxyJump dev
 
 Host apptest
 LogLevel QUIET
@@ -100,7 +100,7 @@ ProxyCommand ssh -W $(basename %h .build02):%p build02
 
 Host ??-??-??-??-??-??.auxprod
 LogLevel QUIET
-ProxyCommand ssh root@appliance-aux01.prod 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
+ProxyCommand ssh root@appliance-aux01.prod1.nakika.tv 'nc $(/usr/local/bin/get_ip $(echo '%h' | cut -d . -f 1))' %p
 
 Host ??-??-??-??-??-??.auxdev
 LogLevel QUIET
