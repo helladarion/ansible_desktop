@@ -38,8 +38,8 @@
 
 - name: compile_YCM
   shell: >
-      ./install.sh chdir=~/.vim/bundle/YouCompleteMe/
+      python3 install.py chdir=~/.vim/bundle/YouCompleteMe/
   become_user: rdepaiva
-  become: true
+  become: false
   when: ( resultvim.rc == 0 )
 
