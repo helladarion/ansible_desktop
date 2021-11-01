@@ -19,6 +19,7 @@ alias extip='curl icanhazip.com'
 
 # Tab to Esc Alias
 alias tab='xmodmap ~/.speedswapper && echo "TabEsc Changed"'
+alias tabesc="xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' && echo 'Cap is Esc'"
 
 # Setting audio output to the headset
 alias fixaudio='pactl set-default-sink alsa_output.usb-Logitech_Inc._Logitech_USB_Headset_H340-00.analog-stereo'
