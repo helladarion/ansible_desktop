@@ -12,6 +12,6 @@ autofs: true
 minecraft: false
 authy: true
 docker: true
-regolith: true
+regolith: false
 steam: true
 sunshine: false
